@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bidule index{% endblock %}
+
+{% block body %}
+    <h1>Bidule index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bidule in bidules %}
+            <tr>
+                <td>{{ bidule.id }}</td>
+                <td>{{ bidule.name }}</td>
+                <td>{{ bidule.description }}</td>
+                <td>
+                    <a href="{{ path('app_bidule_show', {'id': bidule.id}) }}">show</a>
+                    <a href="{{ path('app_bidule_edit', {'id': bidule.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bidule_new') }}">Create new</a>
+
+    <img width="200px" src="img.png" alt="">
+{% endblock %}
